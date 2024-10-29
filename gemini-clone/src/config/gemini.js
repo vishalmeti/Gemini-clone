@@ -1,8 +1,6 @@
 /* eslint-disable no-undef */
 
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
-  
-  // const apiKey = "AIzaSyBQ5siI8kn9CbMi6yFq464Fy1238vWebgE";
   const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
   const genAI = new GoogleGenerativeAI(apiKey);
   
@@ -21,8 +19,7 @@ import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/ge
   async function run(prompt) {
     const chatSession = model.startChat({
       generationConfig,
-      history: [
-      ],
+      history: [],
     });
   
     const result = await chatSession.sendMessage(prompt);
