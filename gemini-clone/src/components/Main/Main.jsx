@@ -1,8 +1,28 @@
 import { assets } from "../../assets/assets"
+import { Context } from "../../context/Context";
 import './Main.css'
+import { useContext } from "react";
 
 
 const Main = () => {
+    const {input,
+        setInput,
+        recentPromt,
+        setRecentPromt,
+        prevPromts,
+        setPrevPromts,
+        loading,
+        setLoading,
+        resultData,
+        setResultData,
+        onSent} = useContext(Context);
+
+        const handleKeyPress = (event) => {
+            if (event.key === 'Enter') {
+                event.target.value = ""
+                onSent();
+            }
+        };
   return (
     <div className="main">
         <div className="nav">
@@ -37,11 +57,11 @@ const Main = () => {
 
             <div className="main-bottom">
                 <div className="search-box">
-                    <input type="text" placeholder="Enter a promt here" />
+                    <input onChange={(e)=> setInput(e.target.value)} onKeyUp={handleKeyPress} value={input}  type="text" placeholder="Enter a promt here" />
                     <div className="">
                         <img src={assets.gallery_icon} alt="" />
                         <img src={assets.mic_icon} alt="" />
-                        <img src={assets.send_icon} alt="" />
+                        <img onClick={()=> onSent()} src={assets.send_icon} alt="" />
                     </div>
                 </div>
                 <p className="bottom-info">
