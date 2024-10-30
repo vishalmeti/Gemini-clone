@@ -187,6 +187,9 @@
 }
 
 @media (max-width: 600px){
+    .main .cards{
+        display: none ;
+    }
     .main-bottom img{
         width: 20px;
     }
