@@ -17,13 +17,13 @@ const Main = () => {
     setResultData,
     showResult,
     setShowResult,
-    onSent,
+    getAiResponse,
   } = useContext(Context);
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       event.target.value = "";
-      onSent();
+      getAiResponse();
     }
   };
   return (
@@ -94,7 +94,7 @@ const Main = () => {
             <div className="">
               <img src={assets.gallery_icon} alt="" />
               <img src={assets.mic_icon} alt="" />
-              <img onClick={() => onSent()} src={assets.send_icon} alt="" />
+              <img onClick={() => getAiResponse()} src={assets.send_icon} alt="" />
             </div>
           </div>
           <p className="bottom-info">
