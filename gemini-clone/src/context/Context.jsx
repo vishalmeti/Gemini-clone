@@ -15,7 +15,10 @@ const ContextProvider = (props) => {
     const [resultData, setResultData] = useState("")
     
     const delayPara = (index,nextWord) => {
-        
+        setTimeout(() => {
+            setResultData((prev) => prev + nextWord);
+        }
+        , index * 125);
     }
 
     const getAiResponse = async () => {
@@ -35,7 +38,13 @@ const ContextProvider = (props) => {
             }
         }
         let newResult2 = newResult.split("*").join("</br></br>");
-        setResultData(newResult2);
+        let newResultArray = newResult2.split(" ");
+
+        for (let i = 0; i < newResultArray.length; i++) {
+            const nextWord = newResultArray[i];
+            delayPara(i,nextWord+" ");
+
+        }
         setLoading(false);
         setInput("");
     }
@@ -44,7 +53,6 @@ const ContextProvider = (props) => {
         setInput((prev) => prev + text);
     }
 
-    // getAiResponse("what is react");
     const contextValue = {
         input,
         setInput,
