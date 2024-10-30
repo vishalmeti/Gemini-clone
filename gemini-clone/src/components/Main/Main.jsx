@@ -92,8 +92,8 @@ const Main = () => {
               placeholder="Enter a promt here"
             />
             <div className="">
-              <img src={assets.gallery_icon} alt="" />
-              <img src={assets.mic_icon} alt="" />
+              {/* <img src={assets.gallery_icon} alt="" />
+              <img src={assets.mic_icon} alt="" /> */}
               <img onClick={() => getAiResponse()} src={assets.send_icon} alt="" />
             </div>
           </div>
